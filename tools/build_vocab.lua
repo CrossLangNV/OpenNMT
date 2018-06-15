@@ -23,6 +23,10 @@ local options = {
       If = 0, vocabularies are not pruned.]]
   },
   {
+    '-side', 'source',
+     [[The source or target side of the data.]]
+  },
+  {
     '-words_min_frequency', { 0 },
     [[List of source words min frequency: `word[ feat1[ feat2[ ...] ] ]`.
       If = 0, vocabularies are pruned by size.]]
@@ -49,10 +53,10 @@ local function main()
 
   _G.logger = onmt.utils.Logger.new(opt.log_file, opt.disable_logs, opt.log_level, opt.log_tag)
 
-  local vocab = onmt.data.Vocabulary.init('source', opt.data, '', opt.vocab_size, opt.words_min_frequency, '', isValid, opt.keep_frequency, opt.idx_files)
+  local vocab = onmt.data.Vocabulary.init(opt.side, opt.data, '', opt.vocab_size, opt.words_min_frequency, '', isValid, opt.keep_frequency, opt.idx_files)
 
-  onmt.data.Vocabulary.save('source', vocab.words, opt.save_vocab .. '.dict')
-  onmt.data.Vocabulary.saveFeatures('source', vocab.features, opt.save_vocab)
+  onmt.data.Vocabulary.save(opt.side, vocab.words, opt.save_vocab .. '.' .. opt.side .. '.dict')
+  onmt.data.Vocabulary.saveFeatures(opt.side, vocab.features, opt.save_vocab)
 
   _G.logger:shutDown()
 end
