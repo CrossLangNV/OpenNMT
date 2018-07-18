@@ -4,6 +4,18 @@
 
 ### New features
 
+### Fixes and improvements
+
+## [v0.10.1](https://github.com/OpenNMT/OpenNMT/releases/tag/v0.10.1) (2018-07-18)
+
+### Fixes and improvements
+
+* Fix error when starting seq2seq training
+
+## [v0.10.0](https://github.com/OpenNMT/OpenNMT/releases/tag/v0.10.0) (2018-07-18)
+
+### New features
+
 * Introduce hook mechanism for additional customization of workflows
 * Sentence-level negative log-likelihood criterion for sequence tagging
 * '-' stands for stdin for inference tools (translate, lm, tag)
